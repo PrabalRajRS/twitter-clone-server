@@ -28,4 +28,6 @@ app.use("/api/users", users);
 app.use("/api/newsFeed", newsFeed);
 app.use("/api/comments", comment);
 app.use('../client/public/uploads', express.static('uploads'));
-app.listen(5000);
+app.listen(process.env.PORT || 5000, function () {
+  console.log("Express server listening on port %d in %s mode", this.address().port, app.settings.env);
+});
