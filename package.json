@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "Basic Signup Signin page baseed using MERN tools",
   "main": "server.js",
+  "engines": {
+    "node": "16.17.0"
+  },
   "scripts": {
     "client-install": "npm install --prefix client",
     "start": "nodemon server.js",
