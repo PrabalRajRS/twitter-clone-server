@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const NewsFeed = require("../../models/NewsFeed");
+const NewsFeed = require("../../models/Newsfeed");
 const multer = require("multer");
 
 const storage = multer.diskStorage({

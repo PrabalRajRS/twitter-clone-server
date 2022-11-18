@@ -30,6 +30,7 @@ app.use("/api/comments", comment);
 app.use('../client/public/uploads', express.static('uploads'));
 
 const port = process.env.PORT || 5000;
-app.listen(port, function () {
+
+app.listen(port, () => {
   console.log(`Server started on port ${port}`);
 });
