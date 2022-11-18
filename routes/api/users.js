@@ -120,7 +120,7 @@ router.put('/profilepicture/:id', upload.any(), async (req, res) => {
       console.log(req.files)
       const updatedUser = await User.findOneAndReplace(
         { _id: req.params.id },
-        { $set: { profilePicture: req?.files[0]?.filename } },
+        { $set: { profilePicture: req.files[0].filename } },
         // profilePicture: req.files[0].filename
       );
       res.send({ updatedUser });
@@ -137,7 +137,7 @@ router.put('/coverPhoto/:id', upload.any(), async (req, res) => {
       console.log(req.files)
       const updatedUser = await User.findOneAndReplace(
         { _id: req.params.id },
-        { $set: { coverPhoto: req?.files[0]?.filename } },
+        { $set: { coverPhoto: req.files[0].filename } },
         // coverPhoto: req.files[0].filename
       );
       res.send({ updatedUser });
@@ -153,7 +153,7 @@ router.post('/follow/:id/:userid', async (req, res) => {
   console.log("req", req, res)
   const foundUser = await User.findOne({ _id: req.params.id });
   console.log("foundUser", foundUser)
-  if (foundUser?.followers.includes(req.params.userid)) {
+  if (foundUser.followers.includes(req.params.userid)) {
     const updatedPost = await User.findOneAndUpdate(
       { _id: req.params.id },
       { $pullAll: { followers: [req.params.userid] } },
@@ -174,7 +174,7 @@ router.post('/following/:id/:userid', async (req, res) => {
   console.log("req", req)
   const foundUser = await User.findOne({ _id: req.params.id });
   console.log("foundUser", foundUser)
-  if (foundUser?.following.includes(req.params.userid)) {
+  if (foundUser.following.includes(req.params.userid)) {
     const updatedPost = await User.findOneAndUpdate(
       { _id: req.params.id },
       { $pullAll: { following: [req.params.userid] } },

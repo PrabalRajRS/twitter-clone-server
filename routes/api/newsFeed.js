@@ -62,7 +62,7 @@ router.post('/likepost/:id/:userid', async (req, res) => {
     console.log("req", req, res)
     const foundPost = await NewsFeed.findOne({ _id: req.params.id });
     console.log("foundPost", foundPost)
-    if (foundPost?.likes?.includes(req.params.userid)) {
+    if (foundPost.likes.includes(req.params.userid)) {
         const updatedPost = await NewsFeed.findOneAndUpdate(
             { _id: req.params.id },
             { $pullAll: { likes: [req.params.userid] } },
@@ -82,7 +82,7 @@ router.post('/likepost/:id/:userid', async (req, res) => {
 router.post('/retweet/:id/:userid', async (req, res) => {
     const foundPost = await NewsFeed.findOne({ _id: req.params.id });
     console.log("foundPost", foundPost)
-    if (foundPost?.reTweets?.includes(req.params.userid)) {
+    if (foundPost.reTweets.includes(req.params.userid)) {
         const updatedPost = await NewsFeed.findOneAndUpdate(
             { _id: req.params.id },
             { $pullAll: { reTweets: [req.params.userid] } },
